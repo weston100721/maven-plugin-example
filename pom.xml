@@ -16,6 +16,8 @@
         <slf4j-api.version>1.7.12</slf4j-api.version>
         <slf4j-log4j12.version>1.7.12</slf4j-log4j12.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
+        <javatuples.version>1.2</javatuples.version>
+        <commons-io.version>1.3.2</commons-io.version>
 
         <!--plugin version-->
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
@@ -30,6 +32,7 @@
 
     <modules>
         <module>maven-jar-plugin</module>
+        <module>maven-assembly-plugin</module>
     </modules>
 
     <build>
@@ -94,6 +97,18 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.javatuples</groupId>
+                <artifactId>javatuples</artifactId>
+                <version>${javatuples.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
