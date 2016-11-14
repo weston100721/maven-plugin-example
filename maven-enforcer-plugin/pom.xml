@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zhaoliang</groupId>
+        <artifactId>maven-plugin-example</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>maven-enforcer-plugin</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <goals>
+                            <goal>display-info</goal>
+                            <goal>enforce</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <message>
+                                        <![CDATA[You are running an older version of Maven. This application requires at least Maven ${maven.version}.]]>
+                                    </message>
+                                    <version>[${maven.version},)</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <message>
+                                        <![CDATA[You are running an older version of Java. This application requires at least JDK ${java.version}.]]>
+                                    </message>
+                                    <version>[${java.version}.0,)</version>
+                                </requireJavaVersion>
+
+                                <bannedDependencies>
+                                    <!--是否检查传递性依赖(间接依赖)-->
+                                    <searchTransitive>true</searchTransitive>
+                                    <excludes>
+                                        <!--groupId[:artifactId][:version][:type][:scope][:classifier]-->
+                                        <exclude>org.testng:testng</exclude>
+                                    </excludes>
+                                    <message>don't use TestNG,must use JUnit</message>
+                                </bannedDependencies>
+                                <requireOS>
+                                    <name>windows 10</name>
+                                    <family>windows</family>
+                                    <arch>x86_64</arch>
+                                    <arch>amd64</arch>
+                                </requireOS>
+                                <requireProperty>
+                                    <property>project.version</property>
+                                    <message>"Project version must be specified."</message>
+                                    <regex>.*(\d|-SNAPSHOT)$</regex>
+                                    <regexMessage>"Project version must end in a number or -SNAPSHOT."</regexMessage>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>enforce-install</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <phase>install</phase>
+                        <configuration>
+                            <rules>
+                                <requireProperty>
+                                    <property>project.version</property>
+                                    <message>"Project version must be specified."</message>
+                                    <regex>.*(\d)$</regex>
+                                    <regexMessage>"Project version must end in a number."</regexMessage>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!--<dependency>-->
+        <!--<groupId>org.testng</groupId>-->
+        <!--<artifactId>testng</artifactId>-->
+        <!--<version>6.1.1</version>-->
+        <!--<scope>test</scope>-->
+        <!--</dependency>-->
+    </dependencies>
+
+</project>

@@ -26,9 +26,14 @@
         <maven-jar-plugin.version>2.2</maven-jar-plugin.version>
         <maven-shade-plugin.version>2.3</maven-shade-plugin.version>
         <maven-bundle-plugin.version>3.0.1</maven-bundle-plugin.version>
+        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
 
         <!--parameters-->
+        <java.version>1.8</java.version>
+        <maven.version>3.3.3</maven.version>
         <compiler.version>1.8</compiler.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     </properties>
 
     <modules>
@@ -36,6 +41,7 @@
         <module>maven-assembly-plugin</module>
         <module>maven-bundle-plugin</module>
         <module>maven-dependency-plugin</module>
+        <module>maven-enforcer-plugin</module>
     </modules>
 
     <build>
@@ -46,6 +52,7 @@
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>${maven-bundle-plugin.version}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -56,6 +63,12 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
                 </plugin>
 
                 <!-- 源码打包 -->
