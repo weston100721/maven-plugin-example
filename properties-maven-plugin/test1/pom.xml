@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zhaoliang</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!--按照这种方式配置。我们执行 mvn package 后，在 target/classes/jdbc.properties 里可以看到配置文件被成功替换。-->
+    <artifactId>test1</artifactId>
+    <!--<packaging>pom</packaging>-->
+    <!--<modules>-->
+        <!--<module>../test2</module>-->
+        <!--<module>../test3</module>-->
+    <!--</modules>-->
+    <properties>
+        <jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
+        <jdbc.url>jdbc:mysql://localhost/stock</jdbc.url>
+        <jdbc.username>root</jdbc.username>
+        <jdbc.password>123</jdbc.password>
+        <jdbc.validationQuery>SELECT 1 + 1</jdbc.validationQuery>
+    </properties>
+
+
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>

@@ -42,3 +42,11 @@
 > maven-assembly-plugin的用途是制作项目分发包，该分发包可能包含了项目的可执行文件、源代码、readme、平台脚本等等。maven-assembly-plugin支持各种主流的格式如zip、tar.gz、jar和war等，具体打包哪些文件是高度可控的，例如用户可以按文件级别的粒度、文件集级别的粒度、模块级别的粒度、以及依赖级别的粒度控制打包，此外，包含和排除配置也是支持的。maven-assembly-plugin要求用户使用一个名为assembly.xml的元数据文件来表述打包，它的single目标可以直接在命令行调用，也可以被绑定至生命周期。
 
 **官方文档：** [maven-assembly-plugin](http://maven.apache.org/plugins/maven-assembly-plugin/)
+
+## maven-surefire-plugin
+> The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. It generates reports in two different file formats:
+
+**官方文档：** [maven-assembly-plugin](http://maven.apache.org/surefire/maven-surefire-plugin/)
+
+## properties-maven-plugin
+> The Properties Maven Plugin is here to make life a little easier when dealing with properties. It provides goals to read properties from files and URLs and write properties to files, and also to set system properties.It's main use-case is loading properties from files or URLs instead of declaring them in pom.xml, something that comes in handy when dealing with different environments. If you have a properties file called teams.properties with this content:

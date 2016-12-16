@@ -18,6 +18,7 @@
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <javatuples.version>1.2</javatuples.version>
         <commons-io.version>1.3.2</commons-io.version>
+        <commons-lang.version>1.0</commons-lang.version>
 
         <!--plugin version-->
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
@@ -42,9 +43,21 @@
         <module>maven-bundle-plugin</module>
         <module>maven-dependency-plugin</module>
         <module>maven-enforcer-plugin</module>
+        <module>maven-surefire-plugin</module>
+        <module>properties-maven-plugin</module>
     </modules>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${compiler.version}</source>
+                    <target>${compiler.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -90,6 +103,12 @@
                     <version>${maven-shade-plugin.version}</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
@@ -100,6 +119,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
             </dependency>
 
             <dependency>

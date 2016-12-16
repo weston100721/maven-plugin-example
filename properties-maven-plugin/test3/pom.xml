@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zhaoliang</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>test3</artifactId>
+
+    <!--我们现在只需要执行命令 mvn package -Pdev 或者 mvn package 就可以打一个开发的包。-->
+    <!--执行命令 mvn package -Ptest 就可以打一个测试用的包。-->
+    <!--而且在 target/profile.properties 里查看项目打包的全部maven用到的配置项-->
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                            <goal>write-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${pom.basedir}/profiles/${profile.id}/my.properties</file>
+                            </files>
+                            <outputFile>${build.directory}/profile.properties</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.id>dev</profile.id>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>6.0.5</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profile.id>test</profile.id>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <version>1.8.0.10</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>
