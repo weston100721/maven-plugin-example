@@ -63,7 +63,7 @@
                             </rules>
                         </configuration>
                     </execution>
-                    <execution>
+                    <!--<execution>
                         <id>enforce-install</id>
                         <goals>
                             <goal>enforce</goal>
@@ -79,7 +79,7 @@
                                 </requireProperty>
                             </rules>
                         </configuration>
-                    </execution>
+                    </execution>-->
                 </executions>
             </plugin>
         </plugins>

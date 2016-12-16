@@ -11,6 +11,10 @@
 
     <artifactId>test3</artifactId>
 
+    <prerequisites>
+        <maven>3.3.3</maven>
+    </prerequisites>
+
     <!--我们现在只需要执行命令 mvn package -Pdev 或者 mvn package 就可以打一个开发的包。-->
     <!--执行命令 mvn package -Ptest 就可以打一个测试用的包。-->
     <!--而且在 target/profile.properties 里查看项目打包的全部maven用到的配置项-->
@@ -25,6 +29,11 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
@@ -80,4 +89,22 @@
             </dependencies>
         </profile>
     </profiles>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>dependency-updates-report</report>
+                            <report>plugin-updates-report</report>
+                            <report>property-updates-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
