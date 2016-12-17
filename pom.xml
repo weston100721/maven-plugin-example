@@ -31,7 +31,7 @@
 
         <!--parameters-->
         <java.version>1.8</java.version>
-        <maven.version>3.3.3</maven.version>
+        <maven.version>3.0.0</maven.version>
         <compiler.version>1.8</compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
