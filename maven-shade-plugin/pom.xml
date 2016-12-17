@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>maven-jar-plugin</artifactId>
+    <artifactId>maven-shade-plugin</artifactId>
 
     <build>
         <resources>
