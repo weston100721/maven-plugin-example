@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/weston100721/maven-plugin-example.svg?branch=master)](https://travis-ci.org/weston100721/maven-plugin-example)
+
 # maven-plugin-example
 > 展示各种maven plugin的使用
 
