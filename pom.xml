@@ -45,6 +45,7 @@
         <module>maven-enforcer-plugin</module>
         <module>maven-surefire-plugin</module>
         <module>properties-maven-plugin</module>
+        <module>appassembler-maven-plugin</module>
     </modules>
 
     <build>
