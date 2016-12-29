@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zhaoliang</groupId>
+        <artifactId>maven-plugin-example</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>appassembler-maven-plugin</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <configuration>
+                    <assembleDirectory>${pom.basedir}/appassembler</assembleDirectory>
+                    <goal>assemble</goal>
+                    <binFileExtensions>
+                        <unix>.sh</unix>
+                        <windows>.bat</windows>
+                    </binFileExtensions>
+                    <configurationSourceDirectory>${pom.basedir}/src/main/resources</configurationSourceDirectory>
+                    <configurationDirectory>conf</configurationDirectory>
+                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
+                    <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+                    <extraJvmArguments>-Xms16m</extraJvmArguments>
+                    <programs>
+                        <program>
+                            <mainClass>com.zhaoliang.appassembler.maven.plugin.Main</mainClass>
+                        </program>
+                    </programs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>appassembler</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
