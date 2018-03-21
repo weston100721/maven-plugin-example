@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>maven-plugin-example</artifactId>
+        <groupId>com.zhaoliang</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>maven-jar-plugin</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+
+
+                            <!--Specification-Title: ${project.name}
+                            Specification-Version: ${project.artifact.selectedVersion.majorVersion}.${project.artifact.selectedVersion.minorVersion}
+                            Specification-Vendor: ${project.organization.name}
+                            Implementation-Title: ${project.name}
+                            Implementation-Version: ${project.version}
+                            Implementation-Vendor-Id: ${project.groupId}
+                            Implementation-Vendor: ${project.organization.name}
+                            Implementation-URL: ${project.url}-->
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+
+                            <!--会在jar包/META-INF/MANIFEST.MF文件中产生这行：Class-Path: commons-collections-3.2.jar commons-beanutils-1.9.3.jar commons-logging-1.2.jar-->
+                            <addClasspath>true</addClasspath>
+
+                            <!--会在jar包/META-INF/MANIFEST.MF文件中产生这行：Main-Class: info.zhaoliang.maven.jar.plugin.Main-->
+                            <mainClass>info.zhaoliang.maven.jar.plugin.Main</mainClass>
+
+                            <!--会在jar包/META-INF/MANIFEST.MF文件中产生这行：Class-Path: lib/commons-collections-3.2.jar lib/commons-beanutils-1.9.3.jar lib/commons-logging-1.2.jar-->
+                            <classpathPrefix>lib/</classpathPrefix>
+
+                            <!--会在jar包/META-INF/MANIFEST.MF文件中产生这行：Class-Path: lib/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar lib/commons-lang/commons-lang/2.1/commons-lang-2.1.jar-->
+                            <classpathLayoutType>repository</classpathLayoutType>
+
+
+                            <!--<classpathLayoutType>custom</classpathLayoutType>-->
+                            <!--<customClasspathLayout>WEB-INF/lib/$${artifact.groupIdPath}/$${artifact.artifactId}-$${artifact.version}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>-->
+                        </manifest>
+
+                        <manifestEntries>
+                            <!--会在jar包/META-INF/MANIFEST.MF文件中产生这行：mode: development-->
+                            <mode>development</mode>
+
+                            <!--会在jar包/META-INF/MANIFEST.MF文件中产生这行：url: http://some.url.org/-->
+                            <url>${project.url}</url>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
