@@ -46,6 +46,7 @@
         <module>maven-surefire-plugin</module>
         <module>properties-maven-plugin</module>
         <module>appassembler-maven-plugin</module>
+        <module>maven-jar-plugin</module>
     </modules>
 
     <build>

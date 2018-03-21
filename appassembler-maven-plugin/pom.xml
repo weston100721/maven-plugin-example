@@ -16,6 +16,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.2.1</version>
                 <configuration>
                     <assembleDirectory>${pom.basedir}/appassembler</assembleDirectory>
                     <goal>assemble</goal>
