@@ -21,6 +21,8 @@
                     <archive>
                         <manifest>
 
+                            <!--Use Your Own Manifest File-->
+                            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
 
                             <!--Specification-Title: ${project.name}
                             Specification-Version: ${project.artifact.selectedVersion.majorVersion}.${project.artifact.selectedVersion.minorVersion}
